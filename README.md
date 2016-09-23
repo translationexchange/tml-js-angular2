@@ -102,7 +102,8 @@ With token data:
   Happy birthday {name}, you're now {age} years old 
 </div>
 ```      
-Mixed:
+
+Mixed interpolation and token data:
     
 ```html
 //data:
