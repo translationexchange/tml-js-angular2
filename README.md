@@ -78,14 +78,16 @@ npm install tml-angular2
     
 Plain string:
     
-```html    <h1 tmlTr>Hello World</h1>
+```html
+    <h1 tmlTr>Hello World</h1>
     
     <h1 tmlTr="Hello World"></h1>
 ```
   
 Variable:
     
-```html    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
+```html
+    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
     <h1 [tmlTr]="greetings.hello"></h1>
     
     <h1 tmlTr>{{greetings.goodbye}}</h1>
@@ -93,7 +95,8 @@ Variable:
 
 With token data:
     
-```html    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
+```html
+    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
     
     <div class="birthday" tmlTr [tmlValues]="{ name: user.name, age: user.age }">
       Happy birthday {name}, you're now {age} years old 
@@ -101,7 +104,7 @@ With token data:
 ```      
 Mixed:
     
-    ```html
+```html
     //data:
     ingredient: { quantity: 2, measurements: 'tablespoon', name: 'minced garlic' }
     
