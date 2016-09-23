@@ -78,27 +78,30 @@ npm install tml-angular2
     
 Plain string:
     
-    <h1 tmlTr>Hello World</h1>
+```html    <h1 tmlTr>Hello World</h1>
     
     <h1 tmlTr="Hello World"></h1>
+```
   
 Variable:
     
-    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
+```html    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
     <h1 [tmlTr]="greetings.hello"></h1>
     
     <h1 tmlTr>{{greetings.goodbye}}</h1>
+```
 
 With token data:
     
-    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
+```html    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
     
     <div class="birthday" tmlTr [tmlValues]="{ name: user.name, age: user.age }">
       Happy birthday {name}, you're now {age} years old 
     </div>
-      
+```      
 Mixed:
     
+    ```html
     //data:
     ingredient: { quantity: 2, measurements: 'tablespoon', name: 'minced garlic' }
     
@@ -111,35 +114,41 @@ Mixed:
     
     //result:
     <h1>2 cups minced garlic</h1>
+```
         
 #### Phrase description ####
 
 The description of a phrase is not mandatory, but it should be used in cases when the label alone is not sufficient enough to determine the meaning of the sentence being translated. As a general rule, you should always provide description to words, phrases and sentences that are only meaningful within a specific context. TML uses label and description together to create a unique key for each phrase. The description serves two purposes: it creates a unique key for each label and it also gives a hint to the translators for the context in which the label is used.
 
+```html
     <h3 tmlTr tmlDescription="Link to invite your friends to join the site">Invite</h3>
     
     <span tmlTr="Invite" tmlDescription="An invitation you received from your friend"></span>
+```
 
 #### Simple string translation with a pipe (for attributes, alts, titles)
     
+```html
     <img alt="{{ 'amazing art' | trl }}"" src="amazing-art.jpg" />
     
     <input name="username" placeholder="{{ 'Enter username' | trl }}"" />
-    
+```
     
 #### Pipe with token data
     
+```html
     <input type="number" name="age" 
      min="{{limits.minimalAge}}" 
      placeholder="{{ 'Enter your age (must be over {age})' | trl:{ age: limits.minimalAge }}" />
-    
+```    
     
 #### Pipe with token data and description
     
+```html
     <input type="number" name="age" 
      min="{{limits.minimalAge}}" 
      placeholder="{{ 'Enter your age (must be over {age})' | trl:'Person age in years':{ age: limits.minimalAge }}" />
-    
+```
     
 <a name="js-api"></a>
 ### JS API ###
