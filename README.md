@@ -79,12 +79,12 @@ npm install tml-angular2
 Plain string:
     
     <h1 tmlTr>Hello World</h1>
-    <h1 tmlTr='Hello World'></h1>
+    <h1 tmlTr="Hello World"></h1>
   
 Variable:
     
     // greetings: { hello: "Hello World" }
-    <h1 [tmlTr]='greetings.hello'></h1>
+    <h1 [tmlTr]="greetings.hello"></h1>
     <h1 tmlTr>{{greetings.hello}}</h1>
     
 Mixed:
@@ -116,23 +116,23 @@ The description of a phrase is not mandatory, but it should be used in cases whe
 
 #### Simple string translation with a pipe (for attributes, alts, titles)
     
-    <img alt="{{ 'amazing art' | trl }}"" src='amazing-art.jpg' />
+    <img alt="{{ 'amazing art' | trl }}"" src="amazing-art.jpg" />
     
-    <input name='username' placeholder="{{ 'Enter username' | trl }}"" />
+    <input name="username" placeholder="{{ 'Enter username' | trl }}"" />
     
     
 #### Pipe with token data
     
-    <input type='number' name='age' 
-     min='{{limits.minimalAge}}' 
+    <input type="number" name="age" 
+     min="{{limits.minimalAge}}" 
      placeholder="{{ 'Enter your age (must be over {age})' | trl:{ age: limits.minimalAge }}" />
     
     
 #### Pipe with token data and description
     
-    <input type='number' name='age' 
-     min='{{limits.minimalAge}}' 
-     placeholder="{{ 'Enter your age (must be over {age})' | trl:"Person age in years":{ age: limits.minimalAge }}" />
+    <input type="number" name="age" 
+     min="{{limits.minimalAge}}" 
+     placeholder="{{ 'Enter your age (must be over {age})' | trl:'Person age in years':{ age: limits.minimalAge }}" />
     
     
 <a name="js-api"></a>
