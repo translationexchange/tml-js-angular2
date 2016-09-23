@@ -107,16 +107,29 @@ There is an injectable service called `TranslateService` which exposes some usef
 
 `changeLanguage(locale, callback)` - Change language by locale
 
-`isRtl` - Is the currently selected language right-to-left
+`isRtl()` - Is the currently selected language right-to-left
 
-`languageChanged$` - event emitter that's triggered on language change
+`languageChanged$ : EventEmitter<Language>` - event emitter that's triggered on language change
 
 ```js
   //in your component
   import {TranslateService} from "tml-angular2";
   
   constructor(translateService: TranslateService) {
-      translateService.languageChanged$.subscribe(language => console.log('current language:', language));
+      
+      translateService.languageChanged$.subscribe(language => console.log(language));
+      // { locale: 'en', native_name: 'English', .... }
+      
+      translateService.currentLanguage();
+      // { locale: 'en', native_name: 'English',  .... }
+      
+      translateService.isRtl();
+      // false
+      
+      translateService.changeLanguage('ru', (language) => {
+        console.log(language);
+        // {locale: 'ru', native_name: 'Русский', .... } 
+      }
   }
 ```
 
