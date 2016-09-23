@@ -27,49 +27,49 @@ npm install tml-angular2
 
 ### Include it in your angular app
 ```js
-    //--- main.ts ---
+//--- main.ts ---
 
-    //import the init 
-    import {init} from "tml-angular2";
-    
-    import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-    import { enableProdMode } from '@angular/core';
-    import { AppModule } from './app.module';
-    if (process.env.ENV === 'production') {
-        enableProdMode();
+//import the init 
+import {init} from "tml-angular2";
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { AppModule } from './app.module';
+if (process.env.ENV === 'production') {
+    enableProdMode();
+}
+
+//init tml.js
+init({
+    key: "YOUR_APP_KEY",
+    onLoad: function(app: any) {
+        
+        //bootstrap angular app after tml starts
+        platformBrowserDynamic().bootstrapModule(AppModule);
     }
-    
-    //init tml.js
-    init({
-        key: "YOUR_APP_KEY",
-        onLoad: function(app: any) {
-            
-            //bootstrap angular app after tml starts
-            platformBrowserDynamic().bootstrapModule(AppModule);
-        }
-    });
-    
-    //--- app.module.ts ---
-    
-    import { NgModule } from '@angular/core';
-    import { BrowserModule }  from '@angular/platform-browser';
-    
-    //import the main module
-    import {TmlAngularModule} from "tml-angular2";
+});
 
-    //add it to your module imports
-    @NgModule({
-        imports: [
-            BrowserModule,
-            TmlAngularModule,
-            // more modules
-        ],
-        declarations: [
-          // ...
-        ]
-    })
-    
-    export class AppModule { }
+//--- app.module.ts ---
+
+import { NgModule } from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+
+//import the main module
+import {TmlAngularModule} from "tml-angular2";
+
+//add it to your module imports
+@NgModule({
+    imports: [
+        BrowserModule,
+        TmlAngularModule,
+        // more modules
+    ],
+    declarations: [
+      // ...
+    ]
+})
+
+export class AppModule { }
 ```
 
 ## Usage
@@ -78,45 +78,44 @@ npm install tml-angular2
     
 Plain string:
     
-```html
-    <h1 tmlTr>Hello World</h1>
-    
-    <h1 tmlTr="Hello World"></h1>
+```html<h1 tmlTr>Hello World</h1>
+
+<h1 tmlTr="Hello World"></h1>
 ```
   
 Variable:
     
 ```html
-    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
-    <h1 [tmlTr]="greetings.hello"></h1>
-    
-    <h1 tmlTr>{{greetings.goodbye}}</h1>
+// greetings: { hello: "Hello World", goodbye: "Bye now!" }
+<h1 [tmlTr]="greetings.hello"></h1>
+
+<h1 tmlTr>{{greetings.goodbye}}</h1>
 ```
 
 With token data:
     
 ```html
-    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
-    
-    <div class="birthday" tmlTr [tmlValues]="{ name: user.name, age: user.age }">
-      Happy birthday {name}, you're now {age} years old 
-    </div>
+<h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
+
+<div class="birthday" tmlTr [tmlValues]="{ name: user.name, age: user.age }">
+  Happy birthday {name}, you're now {age} years old 
+</div>
 ```      
 Mixed:
     
 ```html
-    //data:
-    ingredient: { quantity: 2, measurements: 'tablespoon', name: 'minced garlic' }
-    
-    //template:
-    <h1 [tmlValues]="{ count: ingredient.quantity }" 
-     tmlTr="{ count || {{ingredient.measurements}} } {{ingredient.name}}"></h1>
+//data:
+ingredient: { quantity: 2, measurements: 'tablespoon', name: 'minced garlic' }
 
-    //translators see:
-    {count || tablespoon} minced garlic 
-    
-    //result:
-    <h1>2 cups minced garlic</h1>
+//template:
+<h1 [tmlValues]="{ count: ingredient.quantity }" 
+ tmlTr="{ count || {{ingredient.measurements}} } {{ingredient.name}}"></h1>
+
+//translators see:
+{count || tablespoon} minced garlic 
+
+//result:
+<h1>2 cups minced garlic</h1>
 ```
         
 #### Phrase description ####
@@ -124,33 +123,32 @@ Mixed:
 The description of a phrase is not mandatory, but it should be used in cases when the label alone is not sufficient enough to determine the meaning of the sentence being translated. As a general rule, you should always provide description to words, phrases and sentences that are only meaningful within a specific context. TML uses label and description together to create a unique key for each phrase. The description serves two purposes: it creates a unique key for each label and it also gives a hint to the translators for the context in which the label is used.
 
 ```html
-    <h3 tmlTr tmlDescription="Link to invite your friends to join the site">Invite</h3>
-    
-    <span tmlTr="Invite" tmlDescription="An invitation you received from your friend"></span>
+<h3 tmlTr tmlDescription="Link to invite your friends to join the site">Invite</h3>
+
+<span tmlTr="Invite" tmlDescription="An invitation you received from your friend"></span>
 ```
 
 #### Simple string translation with a pipe (for attributes, alts, titles)
     
 ```html
-    <img alt="{{ 'amazing art' | trl }}"" src="amazing-art.jpg" />
-    
-    <input name="username" placeholder="{{ 'Enter username' | trl }}"" />
+<img alt="{{ 'amazing art' | trl }}"" src="amazing-art.jpg" />
+
+<input name="username" placeholder="{{ 'Enter username' | trl }}"" />
 ```
     
 #### Pipe with token data
     
 ```html
-    <input type="number" name="age" 
-     min="{{limits.minimalAge}}" 
-     placeholder="{{ 'Enter your age (must be over {age})' | trl:{ age: limits.minimalAge }}" />
+<input type="number" name="age" 
+ min="{{limits.minimalAge}}" 
+ placeholder="{{ 'Enter your age (must be over {age})' | trl:{ age: limits.minimalAge }}" />
 ```    
     
 #### Pipe with token data and description
     
-```html
-    <input type="number" name="age" 
-     min="{{limits.minimalAge}}" 
-     placeholder="{{ 'Enter your age (must be over {age})' | trl:'Person age in years':{ age: limits.minimalAge }}" />
+```html<input type="number" name="age" 
+ min="{{limits.minimalAge}}" 
+ placeholder="{{ 'Enter your age (must be over {age})' | trl:'Person age in years':{ age: limits.minimalAge }}" />
 ```
     
 <a name="js-api"></a>
@@ -183,34 +181,34 @@ There is an injectable service called `TranslateService` which exposes some usef
   `languageChanged$ : EventEmitter<Language>`
 
 ```js
-  //in your component
-  import {TranslateService} from "tml-angular2";
-  
-  constructor(translateService: TranslateService) {
-      
-      translateService.currentLanguage();
-      // { locale: 'en', native_name: 'English',  .... }
-      
-      translateService.isRtl();
-      // false
-      
+//in your component
+import {TranslateService} from "tml-angular2";
+
+constructor(translateService: TranslateService) {
+    
+    translateService.currentLanguage();
+    // { locale: 'en', native_name: 'English',  .... }
+    
+    translateService.isRtl();
+    // false
+    
+    translateService.translate("Hello World");
+    // Hello World
+    
+    translateService.changeLanguage('ru', (language) => {
+      console.log(language);
+      // {locale: 'ru', native_name: 'Русский', .... }
+       
       translateService.translate("Hello World");
-      // Hello World
-      
-      translateService.changeLanguage('ru', (language) => {
-        console.log(language);
-        // {locale: 'ru', native_name: 'Русский', .... }
-         
-        translateService.translate("Hello World");
-        // Привет Мир
-      }
-      
-      translateService.languageChanged$.subscribe(language => { 
-        console.log(language)
-        // {locale: 'ru', native_name: 'Русский', .... }
-      });
-  
-  }
+      // Привет Мир
+    }
+    
+    translateService.languageChanged$.subscribe(language => { 
+      console.log(language)
+      // {locale: 'ru', native_name: 'Русский', .... }
+    });
+
+}
 ```
 
 
