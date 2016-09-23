@@ -88,6 +88,19 @@ npm install tml-angular2
     
     <h1 tmlTr tmlValues="{ user: username.name }">Welcome {user}</h1>
     
+#### Attribute with token data
+    
+    <input type='number' name='age' 
+     min='{{limits.minimalAge}}' 
+     placeholder="{{ 'Enter your age (must be over {age})' | trl:{ age: limits.minimalAge }}" />
+    
+    
+#### Attribute with token data and description
+    
+    <input type='number' name='age' 
+     min='{{limits.minimalAge}}' 
+     placeholder="{{ 'Enter your age (must be over {age})' | trl:"Person age in years":{ age: limits.minimalAge }}" />
+    
     
 #### Phrase description ####
 
