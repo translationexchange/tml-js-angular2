@@ -78,7 +78,8 @@ export class AppModule { }
     
 Plain string:
     
-```html<h1 tmlTr>Hello World</h1>
+```html
+<h1 tmlTr>Hello World</h1>
 
 <h1 tmlTr="Hello World"></h1>
 ```
