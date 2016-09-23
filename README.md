@@ -117,9 +117,6 @@ There is an injectable service called `TranslateService` which exposes some usef
   
   constructor(translateService: TranslateService) {
       
-      translateService.languageChanged$.subscribe(language => console.log(language));
-      // { locale: 'en', native_name: 'English', .... }
-      
       translateService.currentLanguage();
       // { locale: 'en', native_name: 'English',  .... }
       
@@ -130,6 +127,13 @@ There is an injectable service called `TranslateService` which exposes some usef
         console.log(language);
         // {locale: 'ru', native_name: 'Русский', .... } 
       }
+      
+      translateService.languageChanged$.subscribe(language => { 
+        console.log(language)
+        // {locale: 'ru', native_name: 'Русский', .... }
+      });
+            
+
   }
 ```
 
