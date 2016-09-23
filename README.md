@@ -74,18 +74,37 @@ npm install tml-angular2
 
 ## Usage
 
-#### Simple string translation
+#### Translation Examples:
     
-    //plain string
+    Plain string:
+    
     <h1 tmlTr>Hello World</h1>
+    <h1 tmlTr='Hello World'></h1>
     
-    //variable
+    Variable:
+    
+    // greetings: { hello: "Hello World" }
     <h1 [tmlTr]='greetings.hello'></h1>
     <h1 tmlTr>{{greetings.hello}}</h1>
+    
+    Mixed:
+    
+    data:
+    ingredient: { quantity: 2, measurements: 'tablespoon', name: 'minced garlic' }
+    
+    template:
+    <h1 [tmlValues]="{ count: ingredient.quantity }" 
+     tmlTr="{ count || {{ingredient.measurements}} } {{ingredient.name}}"></h1>
+
+    translators see:
+    {count || tablespoon} minced garlic 
+    
+    result:
+    <h1>2 cups minced garlic</h1>
         
 #### With token data
     
-    <h1 tmlTr tmlValues="{ user: username.name }">Welcome {user}</h1>
+    <h1 tmlTr [tmlValues]="{ user: username.name }">Welcome {user}</h1>
 
 #### Phrase description ####
 
