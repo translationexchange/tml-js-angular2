@@ -146,27 +146,27 @@ The description of a phrase is not mandatory, but it should be used in cases whe
 
 There is an injectable service called `TranslateService` which exposes some useful methods:
 
-Current language:
+**Current language:**
    
   `currentLanguage() : Language`
 
-Change language by locale:
+**Change language by locale:**
   
   `changeLanguage(locale: string, callback:Function<Language>)` 
 
-Is the currently selected language right-to-left:
+**Is the currently selected language right-to-left:**
   
   `isRtl() : boolean` 
 
-Translate string:
+**Translate string:**
    
   `translate(label: string) : string`
     
-  `translate(label: string, description:string) : string`
+  `translate(label: string, description: string) : string`
     
-  `translate(label: string, description:string, values:{[string]: any}) : string`  
+  `translate(label: string, description: string, values: {[string]: any}) : string`  
 
-Language change event:  
+**Language change event:**  
 
   `languageChanged$ : EventEmitter<Language>`
 
