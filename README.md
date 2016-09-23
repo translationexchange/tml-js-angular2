@@ -147,7 +147,8 @@ The description of a phrase is not mandatory, but it should be used in cases whe
     
 #### Pipe with token data and description
     
-```html<input type="number" name="age" 
+```html
+<input type="number" name="age" 
  min="{{limits.minimalAge}}" 
  placeholder="{{ 'Enter your age (must be over {age})' | trl:'Person age in years':{ age: limits.minimalAge }}" />
 ```
