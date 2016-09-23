@@ -148,23 +148,23 @@ There is an injectable service called `TranslateService` which exposes some usef
 
 Current language:
    
-  `currentLanguage()`
+  `currentLanguage() : Language`
 
 Change language by locale:
   
-  `changeLanguage(locale, callback)` 
+  `changeLanguage(locale: string, callback:Function<Language>)` 
 
 Is the currently selected language right-to-left:
   
-  `isRtl()` 
+  `isRtl() : boolean` 
 
 Translate string:
    
-  `translate(label) : string`
+  `translate(label: string) : string`
     
-  `translate(label, description) : string`
+  `translate(label: string, description:string) : string`
     
-  `translate(label, description, values) : string`  
+  `translate(label: string, description:string, values:{[string]: any}) : string`  
 
 Language change event:  
 
