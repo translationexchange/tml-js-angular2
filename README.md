@@ -86,7 +86,15 @@ Variable:
     // greetings: { hello: "Hello World" }
     <h1 [tmlTr]="greetings.hello"></h1>
     <h1 tmlTr>{{greetings.hello}}</h1>
+
+With token data
     
+    <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
+    
+    <div class="birthday" tmlTr [tmlValues]="{ name: user.name, age: user.age }">
+      Happy birthday {name}, you're now {age} years old 
+    </div>
+      
 Mixed:
     
     //data:
@@ -102,10 +110,6 @@ Mixed:
     //result:
     <h1>2 cups minced garlic</h1>
         
-#### With token data
-    
-    <h1 tmlTr [tmlValues]="{ user: username.name }">Welcome {user}</h1>
-
 #### Phrase description ####
 
 The description of a phrase is not mandatory, but it should be used in cases when the label alone is not sufficient enough to determine the meaning of the sentence being translated. As a general rule, you should always provide description to words, phrases and sentences that are only meaningful within a specific context. TML uses label and description together to create a unique key for each phrase. The description serves two purposes: it creates a unique key for each label and it also gives a hint to the translators for the context in which the label is used.
