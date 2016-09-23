@@ -146,13 +146,22 @@ The description of a phrase is not mandatory, but it should be used in cases whe
 
 There is an injectable service called `TranslateService` which exposes some useful methods:
 
-`currentLanguage()` - Currently selected language
+Current language: 
+  `currentLanguage()`
 
-`changeLanguage(locale, callback)` - Change language by locale
+Change language by locale:
+  `changeLanguage(locale, callback)` 
 
-`isRtl()` - Is the currently selected language right-to-left
+Is the currently selected language right-to-left:
+  `isRtl()` 
 
-`languageChanged$ : EventEmitter<Language>` - event emitter that's triggered on language change
+Translate string: 
+  `translate(label) : string`
+  `translate(label, description) : string`
+  `translate(label, description, values) : string`
+
+Language change event:
+  `languageChanged$ : EventEmitter<Language>`
 
 ```js
   //in your component
@@ -166,17 +175,22 @@ There is an injectable service called `TranslateService` which exposes some usef
       translateService.isRtl();
       // false
       
+      translateService.translate("Hello World");
+      // Hello World
+      
       translateService.changeLanguage('ru', (language) => {
         console.log(language);
-        // {locale: 'ru', native_name: 'Русский', .... } 
+        // {locale: 'ru', native_name: 'Русский', .... }
+         
+        translateService.translate("Hello World");
+        // Привет Мир
       }
       
       translateService.languageChanged$.subscribe(language => { 
         console.log(language)
         // {locale: 'ru', native_name: 'Русский', .... }
       });
-            
-
+  
   }
 ```
 
