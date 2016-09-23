@@ -164,7 +164,7 @@ There is an injectable service called `TranslateService` which exposes some usef
     
   `translate(label: string, description: string) : string`
     
-  `translate(label: string, description: string, values: {[string]: any}) : string`  
+  `translate(label: string, description: string, values: {[key: string]: any}) : string`  
 
 **Language change event:**  
 
