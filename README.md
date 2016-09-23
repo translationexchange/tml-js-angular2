@@ -79,15 +79,17 @@ npm install tml-angular2
 Plain string:
     
     <h1 tmlTr>Hello World</h1>
+    
     <h1 tmlTr="Hello World"></h1>
   
 Variable:
     
-    // greetings: { hello: "Hello World" }
+    // greetings: { hello: "Hello World", goodbye: "Bye now!" }
     <h1 [tmlTr]="greetings.hello"></h1>
-    <h1 tmlTr>{{greetings.hello}}</h1>
+    
+    <h1 tmlTr>{{greetings.goodbye}}</h1>
 
-With token data
+With token data:
     
     <h1 tmlTr [tmlValues]="{ user: user.name }">Welcome {user}</h1>
     
