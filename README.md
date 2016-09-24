@@ -133,9 +133,9 @@ The description of a phrase is not mandatory, but it should be used in cases whe
 #### Simple string translation with a pipe (for attributes, alts, titles)
     
 ```html
-<img alt="{{ 'amazing art' | trl }}"" src="amazing-art.jpg" />
+<img alt="{{ 'amazing art' | trl }}" src="amazing-art.jpg" />
 
-<input name="username" placeholder="{{ 'Enter username' | trl }}"" />
+<input name="username" placeholder="{{ 'Enter username' | trl }}" />
 ```
     
 #### Pipe with token data
