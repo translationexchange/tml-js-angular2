@@ -1,5 +1,4 @@
-import {PipeTransform, Injectable} from "@angular/core";
-import {Pipe} from "@angular/core/src/metadata/directives";
+import {Pipe, PipeTransform, Injectable} from "@angular/core";
 
 declare var require: any;
 var tml = require('tml-js-browser');
@@ -24,7 +23,7 @@ function translateLabel(label: string, description?:string, values?:any) {
 @Injectable()
 @Pipe({
     name: 'trl',
-    pure: false // required to update the value when the promise is resolved
+    pure: false
 })
 export class TranslateLabelPipe implements PipeTransform {
     transform (value: any, ...args: any[]): any {

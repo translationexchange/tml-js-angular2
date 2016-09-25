@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "allowJs": true,
     "allowUnreachableCode": true,
     "emitDecoratorMetadata": true,
@@ -10,10 +11,6 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "files": [
-      "tml-angular2.ts",
-      "./typings/index.d.ts"
-  ],
   "exclude": [
     "node_modules"
   ]
